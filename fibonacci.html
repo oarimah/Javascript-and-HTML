@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title> JavaScript Project 2</title>
+    
+    <style>
+        h1{color: blue;
+            text-align: center;
+        }
+        formatNumber(){font-weight: bold;
+            
+        }
+    
+    
+    </style>
+    <script type = "text/javascript">
+        function formatNumber(num) {
+		  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        }
+            function displayFibonacci() {
+    var max = prompt("What is the upper limit","0");
+
+    var result, newNode, textNode, tempText, boldResult, boldElement1, boldElement2;
+    var parentDiv = document.getElementById("inputHere");
+    var last2Num = 0;
+    var lastNum = 0;
+
+    for(var i = 0; i < max; i++) {
+        tempText = document.createElement("p");
+        boldElement = document.createElement("b");
+
+        if(i == 0 || i == 1) {
+            if(i == 0) {
+                boldElement.textContent = "0";
+                tempText.appendChild(boldElement);
+                tempText.appendChild(document.createTextNode(" : first value in Fibonacci Sequence"));
+            
+                result = 0;
+            } else {
+                boldElement.textContent = "1";
+                tempText.appendChild(boldElement);
+                tempText.appendChild(document.createTextNode(" : second value in Fibonacci Sequence"));
+                result = 1;
+            }
+        } else {
+            //add last two results and display new result
+            last2Num=lastNum;
+            lastNum =result; 
+            result = last2Num + lastNum;
+            //bold parts of text
+            boldResult = result;
+            boldElement.textContent = boldResult;
+            tempText.appendChild(boldElement);
+            tempText.appendChild(document.createTextNode(": result of adding the precedding two values together: "))
+            boldElement = document.createElement("b");
+            boldElement.textContent = formatNumber(lastNum);
+            tempText.appendChild(boldElement);
+            tempText.appendChild(document.createTextNode(" + %last2Num%".replace("%last2Num%", formatNumber(last2Num))));
+        }
+        
+        parentDiv.appendChild(tempText);
+    }
+}</script>
+    
+    <body onload="displayFibonacci()">
+    <h1> Fibonacci</h1>
+    <h3>Fibonacci Sequence</h3>
+    <hr>
+        <p>The Fibboncci Sequence a series of numbers where each value is combination of the prreceding two numbers.<br /><br/>They also appear naturally as seen in such biological settings as: </p>
+        <p><ul>
+        <li>branching in trees</li>
+        <li>phyllotaxis(the arrangement of leaves on a stem)</li>
+        <li>the fruit sprouts if a pineapple</li>
+        <li>he flowering of an artichoke</li>
+        <li>an uncurling fern and the arragement of a pine cone's bracts</li>
+        <li>the chambers of a conch shell</li>
+        </ul>
+        
+        <p>The first two values of the Sequence are 0 and 1<br />so we will just print those out and start calculating at the third iteration<b> (1+0)</b></p>
+        <hr>
+         
+        <div id="inputHere">
+        </div>
+          <!-- <script>
+    
+        maxi = prompt("What is the upper limit","0");
+        document.write("<b>Sequence of numbers up to iteration number:</b> "+maxi);
+        document.write("<br>");
+        document.write(displayFibonacci(maxi));
+         </script>
+        <noscript>
+		document.write("...oops");
+           document.write("<br>");
+           document.write("JavaScript NOT enabled on this browser.")
+           
+	  </noscript>-->
+        
+        <hr>
+        <p>
+           <b> This is the end of the results.</b><br/><br/>
+            Author: [Ositadinma Arimah]<br />
+        </p>
+    </body>
+    
+    
+    
+    </head>
+</html>
